@@ -184,7 +184,7 @@ class App {
     // Add new object to workout array
 
     this.#workouts.push(workout);
-    console.log(this.#workouts);
+    // console.log(this.#workouts);
 
     // Render workout on map as marker
     this._renderWorkoutMarker(workout);
@@ -268,7 +268,7 @@ class App {
 
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    console.log(workoutEl);
+    // console.log(workoutEl);
     if (!workoutEl) return;
 
     const workout = this.#workouts.find(
@@ -283,7 +283,7 @@ class App {
       },
     });
 
-    workout.click();
+    // workout.click();
   }
 
   _setLocalStorage() {
@@ -298,10 +298,15 @@ class App {
     this.#workouts = data;
     this.#workouts.forEach(work => this._renderWorkout(work));
   }
+
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
+  }
 }
 
 const app = new App();
 app._getPosition();
 
-// console.log(L);
+console.log(location);
 // console.log(map);
